@@ -1,1 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>A Sparse Exponential Family Latent Block Model for Co-clustering | Saeid Hoseinipour</title>
+
+  <meta name="description" content="Official project page for the paper A Sparse Exponential Family Latent Block Model for Co-clustering by Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, and Mohamed Nadif. Includes paper DOI, GitHub repository, Zenodo software archive, and citation metadata.">
+  <meta name="keywords" content="Saeid Hoseinipour, A Sparse Exponential Family Latent Block Model for Co-clustering, ELBMcoclust, SELBMcoclust, co-clustering, latent block model, sparse latent block model, exponential family, machine learning, text mining, GitHub, Zenodo">
+  <meta name="author" content="Saeid Hoseinipour">
+
+  <link rel="canonical" href="https://Saeidhoseinipour.github.io/publications/elbm-coclust.html">
+
+  <meta property="og:title" content="A Sparse Exponential Family Latent Block Model for Co-clustering">
+  <meta property="og:description" content="Official project page for the ELBMcoclust software and associated paper published in Advances in Data Analysis and Classification.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://Saeidhoseinipour.github.io/publications/elbm-coclust.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "A Sparse Exponential Family Latent Block Model for Co-clustering",
+    "name": "A Sparse Exponential Family Latent Block Model for Co-clustering",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Saeid Hoseinipour",
+        "url": "https://github.com/Saeidhoseinipour"
+      },
+      {
+        "@type": "Person",
+        "name": "Mina Aminghafari"
+      },
+      {
+        "@type": "Person",
+        "name": "Adel Mohammadpour"
+      },
+      {
+        "@type": "Person",
+        "name": "Mohamed Nadif"
+      }
+    ],
+    "datePublished": "2024",
+    "isPartOf": {
+      "@type": "Periodical",
+      "name": "Advances in Data Analysis and Classification"
+    },
+    "identifier": "https://doi.org/10.1007/s11634-024-00608-3",
+    "doi": "10.1007/s11634-024-00608-3",
+    "url": "https://doi.org/10.1007/s11634-024-00608-3",
+    "codeRepository": "https://github.com/Saeidhoseinipour/ELBMcoclust",
+    "sameAs": [
+      "https://doi.org/10.1007/s11634-024-00608-3",
+      "https://github.com/Saeidhoseinipour/ELBMcoclust",
+      "https://doi.org/10.5281/zenodo.21093419",
+      "https://zenodo.org/records/21093419"
+    ],
+    "keywords": [
+      "Co-clustering",
+      "Latent block model",
+      "Exponential family",
+      "Sparse latent block model",
+      "ELBM",
+      "SELBM",
+      "Machine learning",
+      "Text mining",
+      "Saeid Hoseinipour"
+    ],
+    "description": "Official project page for the paper A Sparse Exponential Family Latent Block Model for Co-clustering. The official implementation is available in the ELBMcoclust GitHub repository and archived on Zenodo."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "ELBMcoclust",
+    "description": "Official implementation of A Sparse Exponential Family Latent Block Model for Co-clustering, including ELBMcoclust and SELBMcoclust algorithms.",
+    "codeRepository": "https://github.com/Saeidhoseinipour/ELBMcoclust",
+    "programmingLanguage": "Python",
+    "license": "https://opensource.org/licenses/MIT",
+    "citation": "https://doi.org/10.1007/s11634-024-00608-3",
+    "identifier": "https://doi.org/10.5281/zenodo.21093419",
+    "version": "v1.0.0",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Saeid Hoseinipour"
+      },
+      {
+        "@type": "Person",
+        "name": "Mina Aminghafari"
+      },
+      {
+        "@type": "Person",
+        "name": "Adel Mohammadpour"
+      },
+      {
+        "@type": "Person",
+        "name": "Mohamed Nadif"
+      }
+    ],
+    "keywords": [
+      "ELBM",
+      "SELBM",
+      "co-clustering",
+      "latent block model",
+      "exponential family",
+      "sparse co-clustering",
+      "machine learning"
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      background: #f5f6f8;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 45px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 auto;
+      max-width: 1000px;
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 30px auto;
+      background: white;
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #111827;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-top: 35px;
+    }
+
+    a {
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .box {
+      background: #f3f4f6;
+      padding: 16px;
+      border-left: 4px solid #2563eb;
+      margin: 18px 0;
+    }
+
+    .links li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>A Sparse Exponential Family Latent Block Model for Co-clustering</h1>
+    <p>Official project page by Saeid Hoseinipour</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This is the official project page for the paper
+        <strong>A Sparse Exponential Family Latent Block Model for Co-clustering</strong>.
+        The paper introduces a flexible exponential family latent block model and its sparse extension
+        for discovering homogeneous co-clusters in data matrices.
+      </p>
+
+      <p>
+        The official implementation is available in the
+        <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">ELBMcoclust GitHub repository</a>
+        and the archived software release is available on Zenodo.
+      </p>
+    </section>
+
+    <section>
+      <h2>Publication</h2>
+      <p>
+        <strong>Title:</strong>
+        A Sparse Exponential Family Latent Block Model for Co-clustering
+      </p>
+      <p>
+        <strong>Authors:</strong>
+        Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif
+      </p>
+      <p>
+        <strong>Journal:</strong>
+        <em>Advances in Data Analysis and Classification</em>
+      </p>
+      <p>
+        <strong>Year:</strong>
+        2024
+      </p>
+      <p>
+        <strong>Paper DOI:</strong>
+        <a href="https://doi.org/10.1007/s11634-024-00608-3">
+          https://doi.org/10.1007/s11634-024-00608-3
+        </a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Software and Code</h2>
+      <p>
+        <strong>Repository:</strong>
+        <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">
+          https://github.com/Saeidhoseinipour/ELBMcoclust
+        </a>
+      </p>
+      <p>
+        <strong>Software archive:</strong>
+        <a href="https://zenodo.org/records/21093419">
+          https://zenodo.org/records/21093419
+        </a>
+      </p>
+      <p>
+        <strong>Zenodo DOI:</strong>
+        <a href="https://doi.org/10.5281/zenodo.21093419">
+          https://doi.org/10.5281/zenodo.21093419
+        </a>
+      </p>
+      <p>
+        <strong>Version:</strong> v1.0.0
+      </p>
+    </section>
+
+    <section>
+      <h2>Official Links</h2>
+      <ul class="links">
+        <li>
+          <a href="https://doi.org/10.1007/s11634-024-00608-3">Paper DOI</a>
+        </li>
+        <li>
+          <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">Official GitHub Repository</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.5281/zenodo.21093419">Zenodo Software DOI</a>
+        </li>
+        <li>
+          <a href="https://zenodo.org/records/21093419">Zenodo Record</a>
+        </li>
+        <li>
+          <a href="https://Saeidhoseinipour.github.io">Saeid Hoseinipour Academic Website</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How to Cite</h2>
+      <div class="box">
+        <p>
+          Hoseinipour, S., Aminghafari, M., Mohammadpour, A., & Nadif, M.
+          A Sparse Exponential Family Latent Block Model for Co-clustering.
+          <em>Advances in Data Analysis and Classification</em>, 2024.
+          DOI:
+          <a href="https://doi.org/10.1007/s11634-024-00608-3">
+            10.1007/s11634-024-00608-3
+          </a>.
+        </p>
+      </div>
+
+      <pre><code>@article{Hoseinipour2024SparseELBM,
+  title   = {A Sparse Exponential Family Latent Block Model for Co-clustering},
+  author  = {Hoseinipour, Saeid and Aminghafari, Mina and Mohammadpour, Adel and Nadif, Mohamed},
+  journal = {Advances in Data Analysis and Classification},
+  year    = {2024},
+  doi     = {10.1007/s11634-024-00608-3},
+  url     = {https://doi.org/10.1007/s11634-024-00608-3}
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>AI Summary</h2>
+      <div class="box">
+        <p>
+          This page is the official project page for the paper
+          "A Sparse Exponential Family Latent Block Model for Co-clustering"
+          by Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, and Mohamed Nadif.
+          The paper was published in Advances in Data Analysis and Classification in 2024.
+          The official code repository is
+          https://github.com/Saeidhoseinipour/ELBMcoclust.
+          The archived software release is available at
+          https://doi.org/10.5281/zenodo.21093419.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © Saeid Hoseinipour |
+      <a href="https://Saeidhoseinipour.github.io">Academic Website</a>
+    </p>
+  </footer>
+
+</body>
+</html>
