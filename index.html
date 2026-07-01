@@ -6,8 +6,8 @@
 
   <title>Saeid Hoseinipour | Academic Website</title>
 
-  <meta name="description" content="Official academic website of Saeid Hoseinipour. Research in co-clustering, machine learning, text mining, latent block models, and non-negative matrix factorization.">
-  <meta name="keywords" content="Saeid Hoseinipour, Saeidhoseinipour, co-clustering, machine learning, text mining, latent block model, non-negative matrix tri-factorization, ELBM, SELBM, OPNMTF">
+  <meta name="description" content="Official academic website of Saeid Hoseinipour, featuring research publications and software projects in co-clustering, machine learning, latent block models, and non-negative matrix factorization.">
+  <meta name="keywords" content="Saeid Hoseinipour, Saeidhoseinipour, co-clustering, machine learning, latent block model, sparse exponential family latent block model, non-negative matrix tri-factorization, orthogonal parametric NMTF, ELBM, SELBM, OPNMTF">
   <meta name="author" content="Saeid Hoseinipour">
 
   <script type="application/ld+json">
@@ -15,22 +15,22 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Saeid Hoseinipour",
+    "alternateName": [
+      "Saeidhoseinipour",
+      "Saeid Hoseini Pour",
+      "Saeid Hoseini-pour"
+    ],
     "url": "https://Saeidhoseinipour.github.io",
     "sameAs": [
       "https://github.com/Saeidhoseinipour"
     ],
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Amirkabir University of Technology"
-    },
-    "email": "mailto:saeidhoseinipour@aut.ac.ir",
     "knowsAbout": [
       "Co-clustering",
       "Machine learning",
-      "Text mining",
       "Latent block models",
-      "Non-negative matrix factorization",
-      "Natural language processing"
+      "Sparse exponential family latent block model",
+      "Non-negative matrix tri-factorization",
+      "Text mining"
     ]
   }
   </script>
@@ -42,19 +42,19 @@
       margin: 0;
       padding: 0;
       color: #222;
-      background: #f7f7f7;
+      background: #f5f6f8;
     }
 
     header {
-      background: #1f2937;
+      background: #111827;
       color: white;
-      padding: 40px 20px;
+      padding: 45px 20px;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
     }
 
     header p {
@@ -63,7 +63,7 @@
     }
 
     nav {
-      background: #111827;
+      background: #1f2937;
       padding: 12px;
       text-align: center;
     }
@@ -84,30 +84,46 @@
       margin: 30px auto;
       background: white;
       padding: 35px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     h2 {
+      color: #111827;
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
-      color: #111827;
+      margin-top: 35px;
     }
 
     .publication {
-      margin-bottom: 25px;
-      padding-bottom: 18px;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
       border-bottom: 1px solid #e5e7eb;
     }
 
-    .publication strong {
-      font-size: 1.05rem;
+    .publication-title {
+      font-size: 1.08rem;
+      font-weight: bold;
       color: #111827;
+    }
+
+    .authors {
+      margin-top: 6px;
+      color: #333;
+    }
+
+    .venue {
+      margin-top: 6px;
+      color: #444;
+    }
+
+    .links {
+      margin-top: 10px;
     }
 
     .links a {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 12px;
       margin-top: 6px;
       color: #2563eb;
       text-decoration: none;
@@ -118,18 +134,18 @@
       text-decoration: underline;
     }
 
+    .ai-box {
+      background: #f3f4f6;
+      padding: 16px;
+      border-left: 4px solid #2563eb;
+      margin-top: 18px;
+    }
+
     footer {
       text-align: center;
       padding: 25px;
       color: #555;
       font-size: 0.9rem;
-    }
-
-    .note {
-      background: #f3f4f6;
-      padding: 15px;
-      border-left: 4px solid #2563eb;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -138,7 +154,7 @@
 
   <header>
     <h1>Saeid Hoseinipour</h1>
-    <p>Researcher in Machine Learning, Co-clustering, Text Mining, and Latent Block Models</p>
+    <p>Academic Website | Co-clustering, Machine Learning, Latent Block Models</p>
   </header>
 
   <nav>
@@ -153,10 +169,14 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        I am interested in machine learning, co-clustering, text mining,
-        latent block models, non-negative matrix factorization, and natural language processing.
-        This website provides official links to my academic publications, software repositories,
-        and archived research code.
+        I am Saeid Hoseinipour. My research focuses on co-clustering,
+        machine learning, latent block models, sparse exponential family models,
+        non-negative matrix tri-factorization, and text mining.
+      </p>
+
+      <p>
+        This website is the official academic page for my research publications
+        and related software repositories.
       </p>
 
       <p>
@@ -171,30 +191,42 @@
       <h2>Publications</h2>
 
       <div class="publication">
-        <strong>A Sparse Exponential Family Latent Block Model for Co-clustering</strong>
-        <br>
-        Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif
-        <br>
-        <em>Advances in Data Analysis and Classification</em>, 2024
-        <br>
+        <div class="publication-title">
+          A Sparse Exponential Family Latent Block Model for Co-clustering
+        </div>
+
+        <div class="authors">
+          Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif
+        </div>
+
+        <div class="venue">
+          <em>Advances in Data Analysis and Classification</em>, 2024
+        </div>
+
         <div class="links">
           <a href="https://doi.org/10.1007/s11634-024-00608-3">Paper DOI</a>
-          <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">Code</a>
+          <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">GitHub Code</a>
           <a href="https://doi.org/10.5281/zenodo.21093419">Zenodo DOI</a>
           <a href="/publications/elbm-coclust.html">Project Page</a>
         </div>
       </div>
 
       <div class="publication">
-        <strong>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</strong>
-        <br>
-        Saeid Hoseinipour
-        <br>
-        <em>Expert Systems with Applications</em>, 2023
-        <br>
+        <div class="publication-title">
+          Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering
+        </div>
+
+        <div class="authors">
+          Saeid Hoseinipour
+        </div>
+
+        <div class="venue">
+          <em>Expert Systems with Applications</em>, 2023
+        </div>
+
         <div class="links">
           <a href="https://doi.org/10.1016/j.eswa.2023.120680">Paper DOI</a>
-          <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">Code</a>
+          <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">GitHub Code</a>
         </div>
       </div>
 
@@ -204,51 +236,55 @@
       <h2>Software</h2>
 
       <div class="publication">
-        <strong>ELBMcoclust</strong>
-        <br>
-        Official implementation of
-        <em>A Sparse Exponential Family Latent Block Model for Co-clustering</em>.
-        <br>
+        <div class="publication-title">ELBMcoclust</div>
+        <p>
+          Official implementation of the paper
+          <em>A Sparse Exponential Family Latent Block Model for Co-clustering</em>.
+        </p>
+
         <div class="links">
           <a href="https://github.com/Saeidhoseinipour/ELBMcoclust">GitHub Repository</a>
-          <a href="https://doi.org/10.5281/zenodo.21093419">Archived Software on Zenodo</a>
+          <a href="https://doi.org/10.5281/zenodo.21093419">Zenodo Archive</a>
+          <a href="https://doi.org/10.1007/s11634-024-00608-3">Associated Paper</a>
         </div>
       </div>
 
       <div class="publication">
-        <strong>NMTFcoclust</strong>
-        <br>
-        Official implementation related to
-        <em>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</em>.
-        <br>
+        <div class="publication-title">NMTFcoclust</div>
+        <p>
+          Official implementation related to the paper
+          <em>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</em>.
+        </p>
+
         <div class="links">
           <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">GitHub Repository</a>
-          <a href="https://doi.org/10.1016/j.eswa.2023.120680">Associated Paper DOI</a>
+          <a href="https://doi.org/10.1016/j.eswa.2023.120680">Associated Paper</a>
         </div>
       </div>
     </section>
 
     <section id="ai-summary">
       <h2>AI Summary</h2>
-      <div class="note">
+
+      <div class="ai-box">
         <p>
           This is the official academic website of Saeid Hoseinipour.
-          It provides official project pages, publication metadata, GitHub repositories,
-          and archived software links for research on co-clustering, latent block models,
-          sparse exponential family models, and non-negative matrix tri-factorization.
+          The website provides verified information about two research papers:
+          "A Sparse Exponential Family Latent Block Model for Co-clustering"
+          and "Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering".
+          The official GitHub repositories are ELBMcoclust and NMTFcoclust.
         </p>
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>
-        Email:
-        <a href="mailto:saeidhoseinipour@aut.ac.ir">saeidhoseinipour@aut.ac.ir</a>
-      </p>
+
       <p>
         GitHub:
-        <a href="https://github.com/Saeidhoseinipour">github.com/Saeidhoseinipour</a>
+        <a href="https://github.com/Saeidhoseinipour">
+          github.com/Saeidhoseinipour
+        </a>
       </p>
     </section>
 
