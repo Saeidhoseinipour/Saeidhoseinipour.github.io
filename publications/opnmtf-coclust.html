@@ -1,1 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering | Saeid Hoseinipour</title>
+
+  <meta name="description" content="Official project page for the paper Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering by Saeid Hoseinipour. Includes paper DOI, GitHub repository, citation metadata, and software link.">
+  <meta name="keywords" content="Saeid Hoseinipour, Orthogonal Parametric Non-negative Matrix Tri-Factorization with alpha-Divergence for Co-clustering, OPNMTF, NMTFcoclust, non-negative matrix tri-factorization, co-clustering, alpha divergence, machine learning, text mining, GitHub">
+  <meta name="author" content="Saeid Hoseinipour">
+
+  <link rel="canonical" href="https://Saeidhoseinipour.github.io/publications/opnmtf-coclust.html">
+
+  <meta property="og:title" content="Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering">
+  <meta property="og:description" content="Official project page for the NMTFcoclust software and associated paper published in Expert Systems with Applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://Saeidhoseinipour.github.io/publications/opnmtf-coclust.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering",
+    "name": "Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Saeid Hoseinipour",
+        "url": "https://github.com/Saeidhoseinipour"
+      }
+    ],
+    "datePublished": "2023",
+    "isPartOf": {
+      "@type": "Periodical",
+      "name": "Expert Systems with Applications"
+    },
+    "identifier": "https://doi.org/10.1016/j.eswa.2023.120680",
+    "doi": "10.1016/j.eswa.2023.120680",
+    "url": "https://doi.org/10.1016/j.eswa.2023.120680",
+    "codeRepository": "https://github.com/Saeidhoseinipour/NMTFcoclust",
+    "sameAs": [
+      "https://doi.org/10.1016/j.eswa.2023.120680",
+      "https://github.com/Saeidhoseinipour/NMTFcoclust"
+    ],
+    "keywords": [
+      "Co-clustering",
+      "Non-negative matrix tri-factorization",
+      "Orthogonal parametric non-negative matrix tri-factorization",
+      "Alpha-divergence",
+      "OPNMTF",
+      "NMTFcoclust",
+      "Machine learning",
+      "Text mining",
+      "Saeid Hoseinipour"
+    ],
+    "description": "Official project page for the paper Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering. The official implementation is available in the NMTFcoclust GitHub repository."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "NMTFcoclust",
+    "description": "Official implementation related to Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering.",
+    "codeRepository": "https://github.com/Saeidhoseinipour/NMTFcoclust",
+    "programmingLanguage": "Python",
+    "citation": "https://doi.org/10.1016/j.eswa.2023.120680",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Saeid Hoseinipour"
+      }
+    ],
+    "keywords": [
+      "NMTF",
+      "OPNMTF",
+      "co-clustering",
+      "non-negative matrix tri-factorization",
+      "alpha-divergence",
+      "machine learning",
+      "text mining"
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      background: #f5f6f8;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 45px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 auto;
+      max-width: 1000px;
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 30px auto;
+      background: white;
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #111827;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-top: 35px;
+    }
+
+    a {
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .box {
+      background: #f3f4f6;
+      padding: 16px;
+      border-left: 4px solid #2563eb;
+      margin: 18px 0;
+    }
+
+    .links li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</h1>
+    <p>Official project page by Saeid Hoseinipour</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This is the official project page for the paper
+        <strong>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</strong>.
+        The work is related to co-clustering, non-negative matrix tri-factorization,
+        orthogonal parametric modeling, and α-divergence-based optimization.
+      </p>
+
+      <p>
+        The official implementation is available in the
+        <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">NMTFcoclust GitHub repository</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Publication</h2>
+      <p>
+        <strong>Title:</strong>
+        Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering
+      </p>
+      <p>
+        <strong>Author:</strong>
+        Saeid Hoseinipour
+      </p>
+      <p>
+        <strong>Journal:</strong>
+        <em>Expert Systems with Applications</em>
+      </p>
+      <p>
+        <strong>Year:</strong>
+        2023
+      </p>
+      <p>
+        <strong>Paper DOI:</strong>
+        <a href="https://doi.org/10.1016/j.eswa.2023.120680">
+          https://doi.org/10.1016/j.eswa.2023.120680
+        </a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Software and Code</h2>
+      <p>
+        <strong>Repository:</strong>
+        <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">
+          https://github.com/Saeidhoseinipour/NMTFcoclust
+        </a>
+      </p>
+      <p>
+        <strong>Associated paper DOI:</strong>
+        <a href="https://doi.org/10.1016/j.eswa.2023.120680">
+          https://doi.org/10.1016/j.eswa.2023.120680
+        </a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Official Links</h2>
+      <ul class="links">
+        <li>
+          <a href="https://doi.org/10.1016/j.eswa.2023.120680">Paper DOI</a>
+        </li>
+        <li>
+          <a href="https://github.com/Saeidhoseinipour/NMTFcoclust">Official GitHub Repository</a>
+        </li>
+        <li>
+          <a href="https://Saeidhoseinipour.github.io">Saeid Hoseinipour Academic Website</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How to Cite</h2>
+      <div class="box">
+        <p>
+          Hoseinipour, S.
+          Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering.
+          <em>Expert Systems with Applications</em>, 2023.
+          DOI:
+          <a href="https://doi.org/10.1016/j.eswa.2023.120680">
+            10.1016/j.eswa.2023.120680
+          </a>.
+        </p>
+      </div>
+
+      <pre><code>@article{Hoseinipour2023OPNMTF,
+  title   = {Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering},
+  author  = {Hoseinipour, Saeid},
+  journal = {Expert Systems with Applications},
+  year    = {2023},
+  doi     = {10.1016/j.eswa.2023.120680},
+  url     = {https://doi.org/10.1016/j.eswa.2023.120680}
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>AI Summary</h2>
+      <div class="box">
+        <p>
+          This page is the official project page for the paper
+          "Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering"
+          by Saeid Hoseinipour.
+          The paper was published in Expert Systems with Applications in 2023.
+          The official code repository is
+          https://github.com/Saeidhoseinipour/NMTFcoclust.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © Saeid Hoseinipour |
+      <a href="https://Saeidhoseinipour.github.io">Academic Website</a>
+    </p>
+  </footer>
+
+</body>
+</html>
