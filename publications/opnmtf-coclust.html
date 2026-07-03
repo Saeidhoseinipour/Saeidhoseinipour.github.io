@@ -186,16 +186,26 @@
 
     <section>
       <h2>Overview</h2>
-      <p>
-        Co-clustering algorithms can seek homogeneous sub-matrices into a dyadic data matrix, such as a document-word matrix. 
-        Algorithms for co-clustering can be expressed as a non-negative matrix tri-factorization problem such that $\mathbf{X} \approx \mathbf{FSG}^{\top}$, 
-        which is associated with the non-negativity conditions on all matrices and the orthogonality of  
-        $\mathbf{F}$ (row-coefficient) and $\mathbf{G}$ (column-coefficient) matrices.
-	      Most algorithms are  based on Euclidean distance and Kullback-Leibler divergence without parameters to control  orthogonality.
-      	We propose to  apply the orthogonality of parameters by adding two penalty terms  based on  the $\alpha$-divergence objective function. 
-        Orthogonal parametric non-negative matrix tri-factorization  uses orthogonal  parameters for row and column space, separately. Finally, 
-        we compare the proposed algorithms with other algorithms on six real text datasets.
-      </p>
+		 <p>
+		    Co-clustering algorithms aim to identify homogeneous sub-matrices within a dyadic data matrix,
+		    such as a document-word matrix. These algorithms can be formulated as a non-negative matrix
+		    tri-factorization problem, where <strong>X ≈ FSG<sup>T</sup></strong>, subject to non-negativity
+		    constraints on all factor matrices and orthogonality constraints on the row-coefficient matrix
+		    <strong>F</strong> and the column-coefficient matrix <strong>G</strong>.
+		  </p>
+		
+		  <p>
+		    Most existing approaches are based on Euclidean distance or Kullback-Leibler divergence and do not
+		    include explicit parameters for controlling orthogonality. In this work, we introduce orthogonality
+		    parameters by adding two penalty terms to an <strong>α-divergence</strong>-based objective function.
+		    The proposed orthogonal parametric non-negative matrix tri-factorization method controls the
+		    orthogonality of the row and column spaces separately.
+		  </p>
+		
+		  <p>
+		    Finally, the proposed algorithms are compared with existing co-clustering methods on six real-world
+		    text datasets.
+		  </p>
 
       <p>
         The official implementation is available in the
