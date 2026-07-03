@@ -187,10 +187,14 @@
     <section>
       <h2>Overview</h2>
       <p>
-        This is the official project page for the paper
-        <strong>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</strong>.
-        The work is related to co-clustering, non-negative matrix tri-factorization,
-        orthogonal parametric modeling, and α-divergence-based optimization.
+        Co-clustering algorithms can seek homogeneous sub-matrices into a dyadic data matrix, such as a document-word matrix. 
+        Algorithms for co-clustering can be expressed as a non-negative matrix tri-factorization problem such that $\mathbf{X} \approx \mathbf{FSG}^{\top}$, 
+        which is associated with the non-negativity conditions on all matrices and the orthogonality of  
+        $\mathbf{F}$ (row-coefficient) and $\mathbf{G}$ (column-coefficient) matrices.
+	      Most algorithms are  based on Euclidean distance and Kullback-Leibler divergence without parameters to control  orthogonality.
+      	We propose to  apply the orthogonality of parameters by adding two penalty terms  based on  the $\alpha$-divergence objective function. 
+        Orthogonal parametric non-negative matrix tri-factorization  uses orthogonal  parameters for row and column space, separately. Finally, 
+        we compare the proposed algorithms with other algorithms on six real text datasets.
       </p>
 
       <p>
