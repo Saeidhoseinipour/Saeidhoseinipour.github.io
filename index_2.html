@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Saeid Hoseinipour | Co-clustering, Latent Block Models & Machine Learning Research</title>
+
+  <meta name="description" content="Official academic website of Saeid Hoseinipour, researcher in co-clustering, latent block models, and non-negative matrix tri-factorization. Publications, software, and contact.">
+  <meta name="keywords" content="Saeid Hoseinipour, Saeidhoseinipour, co-clustering, machine learning, latent block model, sparse exponential family latent block model, non-negative matrix tri-factorization, orthogonal parametric NMTF, ELBM, SELBM, OPNMTF">
+  <meta name="author" content="Saeid Hoseinipour">
+  <link rel="canonical" href="https://saeidhoseinipour.github.io/">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Saeid Hoseinipour | Academic Website">
+  <meta property="og:description" content="Quality over quantity — in science, art, and life. Researcher in data science, co-clustering, and machine learning.">
+  <meta property="og:image" content="https://saeidhoseinipour.github.io/assets/icons/IMG_5645.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:url" content="https://saeidhoseinipour.github.io">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saeid Hoseinipour",
+    "givenName": "Saeid",
+    "familyName": "Hoseinipour",
+    "alternateName": [
+      "Saeid Hoseini Pour","Saeid Hoseini-Pour","Saeed Hoseinipour","Saeidhoseinipour",
+      "Saeid Hosseinipour","S. Hoseinipour","سعید حسینی پور","سعید حسینی‌پور"
+    ],
+    "url": "https://saeidhoseinipour.github.io",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Amirkabir University of Technology",
+      "url": "https://aut.ac.ir"
+    },
+    "sameAs": [
+      "https://github.com/Saeidhoseinipour",
+      "https://orcid.org/0000-0003-3828-9068",
+      "https://scholar.google.com/citations?user=3V_NC4oAAAAJ&hl=en",
+      "https://www.researchgate.net/profile/Saeid-Hoseinipour?ev=hdr_xprf",
+      "https://www.pinterest.com/saeidhoseinipour9/macha/",
+      "https://t.me/IMACHAI"
+    ],
+    "email": ["saeidhoseinipour9@gmail.com","saeidhoseinipour@aut.ac.ir"],
+    "jobTitle": "Researcher",
+    "knowsAbout": [
+      "Co-clustering","Machine Learning","Latent Block Models",
+      "Non-negative Matrix Factorization","Sparse Exponential Family Latent Block Model"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "A Sparse Exponential Family Latent Block Model for Co-clustering",
+        "author": [
+          {"@type": "Person", "name": "Saeid Hoseinipour"},
+          {"@type": "Person", "name": "Mina Aminghafari"},
+          {"@type": "Person", "name": "Adel Mohammadpour"},
+          {"@type": "Person", "name": "Mohamed Nadif"}
+        ],
+        "datePublished": "2024",
+        "isPartOf": {"@type": "Periodical", "name": "Advances in Data Analysis and Classification"},
+        "identifier": "https://doi.org/10.1007/s11634-024-00608-3",
+        "url": "https://doi.org/10.1007/s11634-024-00608-3"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Orthogonal Parametric Non-negative Matrix Tri-Factorization with alpha-Divergence for Co-clustering",
+        "author": [
+          {"@type": "Person", "name": "Saeid Hoseinipour"},
+          {"@type": "Person", "name": "Mina Aminghafari"},
+          {"@type": "Person", "name": "Adel Mohammadpour"}
+        ],
+        "datePublished": "2023",
+        "isPartOf": {"@type": "Periodical", "name": "Expert Systems with Applications"},
+        "identifier": "https://doi.org/10.1016/j.eswa.2023.120680",
+        "url": "https://doi.org/10.1016/j.eswa.2023.120680"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --soft-blue: #eff6ff;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #1f2937;
+        --soft-blue: #1e293b;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 16px;
+      z-index: 1000;
+      border-radius: 0 0 8px 0;
+    }
+    .skip-link:focus {
+      left: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .page {
+      max-width: 1050px;
+      margin: 0 auto;
+      background: var(--card);
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: 44px 40px 34px;
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      position: relative;
+    }
+
+    header h1 { margin: 0 0 10px; font-size: 2.3rem; line-height: 1.2; }
+    header p { margin: 0; max-width: 780px; color: #dbeafe; font-size: 1rem; }
+
+    .header-content { display: flex; align-items: center; gap: 24px; }
+
+    .profile-photo {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      flex: 0 0 135px;
+    }
+
+    .header-text { flex: 1; }
+
+    .cv-button {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+    .cv-button:hover { background: rgba(255,255,255,0.25); }
+
+    .contact-sidebar {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      z-index: 100;
+    }
+
+    .contact-sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.10);
+      padding: 4px 10px;
+      border-radius: 6px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      direction: ltr;
+    }
+    .contact-sidebar a:hover, .contact-sidebar a:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+    .contact-sidebar img { width: 16px; height: 16px; filter: brightness(0) invert(1); }
+    .contact-sidebar span { font-size: 12px; color: white; white-space: nowrap; font-family: inherit; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 40px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    nav a:hover, nav a:focus-visible { color: white; background: var(--primary); }
+
+    main { padding: 34px 40px 44px; }
+    section { margin-bottom: 44px; }
+
+    h2 {
+      font-size: 1.55rem;
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    p { margin-top: 0; color: var(--muted); }
+    a { color: var(--primary); }
+    a:hover { color: var(--primary-dark); }
+
+    .intro {
+      background: var(--soft-blue);
+      border: 1px solid #bfdbfe;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .news-list { list-style: none; margin: 0; padding: 0; }
+    .news-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date { font-weight: 700; color: var(--text); margin-right: 8px; }
+
+    .publication { padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .publication:last-child { border-bottom: none; }
+    .publication-title { font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .publication-summary { font-style: italic; margin-bottom: 8px; }
+    .publication-meta { color: var(--muted); margin-bottom: 8px; }
+    .publication-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .publication-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .publication-links a:hover, .publication-links a:focus-visible {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+      border-radius: 50%;
+      background: var(--soft-blue);
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .contact-link:hover, .contact-link:focus-visible {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 5px 14px rgba(37, 99, 235, 0.25);
+      border-color: var(--primary);
+    }
+    .contact-icon { width: 24px; height: 24px; object-fit: contain; flex: 0 0 24px; }
+    .contact-link:hover .contact-icon, .contact-link:focus-visible .contact-icon { filter: brightness(0) invert(1); }
+
+    footer {
+      padding: 22px 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--soft-blue);
+      font-size: 0.95rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+    .back-to-top.visible { display: block; }
+
+    @media (max-width: 700px) {
+      header, main, nav, footer { padding-left: 22px; padding-right: 22px; }
+      header h1 { font-size: 1.8rem; }
+      .contact-link { width: 48%; min-width: unset; }
+      .header-content { flex-direction: column; align-items: flex-start; }
+      .profile-photo { width: 110px; height: 110px; flex-basis: 110px; }
+      .contact-sidebar { position: static; align-items: flex-start; margin-top: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="header-content">
+        <img class="profile-photo" src="assets/icons/saeid-hoseinipour-profile-photo.png" alt="Portrait of Saeid Hoseinipour">
+        <div class="header-text">
+          <h1>Saeid Hoseinipour</h1>
+          <p>Nature never mass-produces; what it creates is precise, layered, and infinitely refined. <br> Innovating in Silence, Creating in Layers</p>
+          <a class="cv-button" href="assets/cv/Saeid_Hoseinipour_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+        </div>
+      </div>
+
+      <nav class="contact-sidebar" aria-label="Social and academic profiles">
+        <a href="https://github.com/Saeidhoseinipour" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <img class="contact-icon" src="assets/icons/mdi--github.svg" alt="" role="presentation">
+          <span>GitHub</span>
+        </a>
+        <a href="https://orcid.org/0000-0003-3828-9068" target="_blank" rel="noopener noreferrer" title="ORCID">
+          <img class="contact-icon" src="assets/icons/simple-icons--orcid.svg" alt="" role="presentation">
+          <span>ORCID</span>
+        </a>
+        <a href="https://scholar.google.com/citations?user=3V_NC4oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+          <img class="contact-icon" src="assets/icons/academicons--google-scholar-square.svg" alt="" role="presentation">
+          <span>Google Scholar</span>
+        </a>
+        <a href="https://www.researchgate.net/profile/Saeid-Hoseinipour?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" title="ResearchGate">
+          <img class="contact-icon" src="assets/icons/academicons--researchgate-square.svg" alt="" role="presentation">
+          <span>ResearchGate</span>
+        </a>
+        <a href="https://www.pinterest.com/saeidhoseinipour9/_profile/" target="_blank" rel="noopener noreferrer" title="Pinterest">
+          <img class="contact-icon" src="assets/icons/mage--pinterest.svg" alt="" role="presentation">
+          <span>Pinterest</span>
+        </a>
+        <a href="https://t.me/IMACHAI" target="_blank" rel="noopener noreferrer" title="Telegram">
+          <img class="contact-icon" src="assets/icons/ic--outline-telegram.svg" alt="" role="presentation">
+          <span>Telegram</span>
+        </a>
+        <a href="mailto:saeidhoseinipour9@gmail.com" title="Email saeidhoseinipour9@gmail.com">
+          <img class="contact-icon" src="assets/icons/ic--round-email.svg" alt="" role="presentation">
+          <span>saeidhoseinipour9@gmail.com</span>
+        </a>
+      </nav>
+    </header>
+
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#software">Software</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="main">
+      <section id="about">
+        <h2>About</h2>
+        <div class="intro">
+          <p>
+            I earned my BSc in Statistics and Applications at IKIU (2009–2014),
+            where I first got hooked on the idea that data can tell real stories. Then I moved to the University of
+            Tehran for my MSc in Mathematical Statistics (2014–2016),
+            diving deep into Bayesian inference and ranked set sampling. My PhD in Data Science at Amirkabir University
+            of Technology (2016–2023) was where everything came together — I worked on latent block models and
+            non-negative matrix tri-factorization for text co-clustering, guided by three great supervisors.
+          </p>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2>Research Interests</h2>
+        <p>
+          My research focuses on <strong>co-clustering</strong>, <strong>latent block models</strong>,
+          <strong>non-negative matrix tri-factorization</strong>, large language models, and machine
+          learning methods for unstructured and structured data analysis.
+        </p>
+      </section>
+
+      <section id="publications">
+        <h2>Publications</h2>
+
+        <article class="publication">
+          <h3 class="publication-title">A Sparse Exponential Family Latent Block Model for Co-clustering</h3>
+          <div class="publication-meta">Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif</div>
+          <p><em>Advances in Data Analysis and Classification</em>, 2024</p>
+          <p class="publication-summary">In plain terms: a new statistical model that groups rows and columns of sparse count data (like text or gene-expression matrices) at the same time, revealing hidden structure more efficiently.</p>
+          <p>This paper introduces a sparse exponential family latent block model for co-clustering and structured data analysis.</p>
+          <div class="publication-links">
+            <a href="https://doi.org/10.1007/s11634-024-00608-3" target="_blank" rel="noopener noreferrer">Paper DOI</a>
+            <a href="https://github.com/Saeidhoseinipour/ELBMcoclust" target="_blank" rel="noopener noreferrer">GitHub Code</a>
+            <a href="https://doi.org/10.5281/zenodo.21093419" target="_blank" rel="noopener noreferrer">Zenodo DOI</a>
+            <a href="/publications/elbm-coclust.html" rel="noopener noreferrer">Project Page</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <h3 class="publication-title">Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</h3>
+          <div class="publication-meta">Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour</div>
+          <p><em>Expert Systems with Applications</em>, 2023</p>
+          <p class="publication-summary">In plain terms: an improved matrix-factorization technique that clusters data more accurately by enforcing orthogonality constraints and using a flexible divergence measure.</p>
+          <p>This paper presents an orthogonal parametric non-negative matrix tri-factorization method with α-divergence for co-clustering.</p>
+          <div class="publication-links">
+            <a href="https://doi.org/10.1016/j.eswa.2023.120680" target="_blank" rel="noopener noreferrer">Paper DOI</a>
+            <a href="https://github.com/Saeidhoseinipour/NMTFcoclust" target="_blank" rel="noopener noreferrer">GitHub Code</a>
+            <a href="https://doi.org/10.5281/zenodo.21093166" target="_blank" rel="noopener noreferrer">Zenodo DOI</a>
+            <a href="/publications/opnmtf-coclust.html" rel="noopener noreferrer">Project Page</a>
+            <a href="https://hal.science/hal-05032037v1/file/OPNMTF_Saeid.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="software">
+        <h2>Software</h2>
+
+        <article class="publication">
+          <h3 class="publication-title">ELBMcoclust</h3>
+          <div class="publication-meta">Official implementation of <em>A Sparse Exponential Family Latent Block Model for Co-clustering</em></div>
+          <p>Software package and reproducible code for sparse exponential family latent block model co-clustering.</p>
+          <div class="publication-links">
+            <a href="https://github.com/Saeidhoseinipour/ELBMcoclust" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            <a href="https://doi.org/10.5281/zenodo.21093419" target="_blank" rel="noopener noreferrer">Zenodo Archive</a>
+            <a href="https://doi.org/10.1007/s11634-024-00608-3" target="_blank" rel="noopener noreferrer">Associated Paper</a>
+            <a href="/publications/elbm-coclust.html" rel="noopener noreferrer">Project Page</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <h3 class="publication-title">NMTFcoclust</h3>
+          <div class="publication-meta">Official implementation of <em>Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering</em></div>
+          <p>Software package and reproducible code for orthogonal parametric non-negative matrix tri-factorization with α-divergence.</p>
+          <div class="publication-links">
+            <a href="https://github.com/Saeidhoseinipour/NMTFcoclust" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            <a href="https://doi.org/10.5281/zenodo.21093166" target="_blank" rel="noopener noreferrer">Zenodo Archive</a>
+            <a href="https://doi.org/10.1016/j.eswa.2023.120680" target="_blank" rel="noopener noreferrer">Associated Paper</a>
+            <a href="/publications/opnmtf-coclust.html" rel="noopener noreferrer">Project Page</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="news">
+        <h2>News &amp; Updates</h2>
+        <ul class="news-list">
+          <li><span class="news-date">2026</span>Website redesigned with improved accessibility and structured data for research discoverability.</li>
+          <li><span class="news-date">2024</span>Published "A Sparse Exponential Family Latent Block Model for Co-clustering" in <em>Advances in Data Analysis and Classification</em>.</li>
+          <li><span class="news-date">2023</span>Published "Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence" in <em>Expert Systems with Applications</em>.</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-links">
+          <a class="contact-link" href="https://github.com/Saeidhoseinipour" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <img class="contact-icon" src="assets/icons/mdi--github.svg" alt="" role="presentation">
+            <span class="sr-only">GitHub</span>
+          </a>
+          <a class="contact-link" href="https://orcid.org/0000-0003-3828-9068" target="_blank" rel="noopener noreferrer" aria-label="ORCID profile">
+            <img class="contact-icon" src="assets/icons/simple-icons--orcid.svg" alt="" role="presentation">
+            <span class="sr-only">ORCID</span>
+          </a>
+          <a class="contact-link" href="https://scholar.google.com/citations?user=3V_NC4oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile">
+            <img class="contact-icon" src="assets/icons/academicons--google-scholar-square.svg" alt="" role="presentation">
+            <span class="sr-only">Google Scholar</span>
+          </a>
+          <a class="contact-link" href="https://www.researchgate.net/profile/Saeid-Hoseinipour?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate profile">
+            <img class="contact-icon" src="assets/icons/academicons--researchgate-square.svg" alt="" role="presentation">
+            <span class="sr-only">ResearchGate</span>
+          </a>
+          <a class="contact-link" href="https://www.pinterest.com/saeidhoseinipour9/_profile/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest profile">
+            <img class="contact-icon" src="assets/icons/mage--pinterest.svg" alt="" role="presentation">
+            <span class="sr-only">Pinterest</span>
+          </a>
+          <a class="contact-link" href="https://t.me/IMACHAI" target="_blank" rel="noopener noreferrer" aria-label="Telegram channel">
+            <img class="contact-icon" src="assets/icons/ic--outline-telegram.svg" alt="" role="presentation">
+            <span class="sr-only">Telegram</span>
+          </a>
+          <a class="contact-link" href="mailto:saeidhoseinipour9@gmail.com" aria-label="Email saeidhoseinipour9@gmail.com">
+            <img class="contact-icon" src="assets/icons/ic--round-email.svg" alt="" role="presentation">
+            <span class="sr-only">saeidhoseinipour9@gmail.com</span>
+          </a>
+          <a class="contact-link" href="mailto:saeidhoseinipour@aut.ac.ir" aria-label="Email saeidhoseinipour@aut.ac.ir">
+            <img class="contact-icon" src="assets/icons/ic--round-email.svg" alt="" role="presentation">
+            <span class="sr-only">saeidhoseinipour@aut.ac.ir</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Saeid Hoseinipour. All rights reserved.
+    </footer>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
