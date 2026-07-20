@@ -332,6 +332,27 @@
       border-color: var(--primary);
     }
 
+.publication {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.publication-image {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.publication-content {
+  flex: 1;
+  min-width: 0;
+}
+
+    
 .contact-links {
   display: flex;
   flex-direction: row;
@@ -594,7 +615,9 @@
 <section id="software">
   <h2>Software</h2>
 
-  <article class="publication">
+<article class="publication">
+  <img class="publication-image" src="https://github.com/Saeidhoseinipour/ELBMcoclust/blob/main/Images/bar_chart_words_classic3_V4_3_3.svg" alt="ELBMcoclust">
+  <div class="publication-content">
     <div class="publication-title">
       ELBMcoclust
     </div>
@@ -626,9 +649,12 @@
         Project Page
       </a>
     </div>
-  </article>
+  </div>
+</article>
 
-  <article class="publication">
+<article class="publication">
+  <img class="publication-image" src="https://github.com/Saeidhoseinipour/NMTFcoclust/blob/master/Doc/Image/WC_classic3.png" alt="NMTFcoclust">
+  <div class="publication-content">
     <div class="publication-title">
       NMTFcoclust
     </div>
@@ -660,7 +686,8 @@
         Project Page
       </a>
     </div>
-  </article>
+  </div>
+</article>
 </section>
 
       <section id="contact">
