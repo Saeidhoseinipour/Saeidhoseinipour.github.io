@@ -287,13 +287,30 @@
       padding: 22px;
     }
 
-    .publication {
+      .publication {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
       padding: 18px 0;
       border-bottom: 1px solid var(--border);
     }
 
     .publication:last-child {
       border-bottom: none;
+    }
+
+    .publication-image {
+      width: 130px;
+      height: 130px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .publication-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .publication-title {
@@ -331,7 +348,6 @@
       color: white;
       border-color: var(--primary);
     }
-
 .publication {
   display: flex;
   gap: 20px;
@@ -526,88 +542,86 @@
         </p>
       </section>
 
- <section id="publications">
+<section id="publications">
   <h2>Publications</h2>
 
   <article class="publication">
-    <div class="publication-title">
-      A Sparse Exponential Family Latent Block Model for Co-clustering
-    </div>
+    <img class="publication-image" src="assets/images/elbm-paper.png" alt="ELBM Paper">
+    <div class="publication-content">
+      <div class="publication-title">
+        A Sparse Exponential Family Latent Block Model for Co-clustering
+      </div>
 
-    <div class="publication-meta">
-      Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif
-    </div>
+      <div class="publication-meta">
+        Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour, Mohamed Nadif
+      </div>
 
-    <p>
-      <em>Advances in Data Analysis and Classification</em>, 2024
-    </p>
+      <p>
+        <em>Advances in Data Analysis and Classification</em>, 2024
+      </p>
 
-    <p>
-      This paper introduces a sparse exponential family latent block model
-      for co-clustering and structured data analysis.
-    </p>
+      <p>
+        This paper introduces a sparse exponential family latent block model
+        for co-clustering and structured data analysis.
+      </p>
 
-    <div class="publication-links">
-      <a href="https://doi.org/10.1007/s11634-024-00608-3" target="_blank" rel="noopener noreferrer">
-        Paper DOI
-      </a>
-
-      <a href="https://github.com/Saeidhoseinipour/ELBMcoclust" target="_blank" rel="noopener noreferrer">
-        GitHub Code
-      </a>
-
-      <a href="https://doi.org/10.5281/zenodo.21093419" target="_blank" rel="noopener noreferrer">
-        Zenodo DOI
-      </a>
-
-      <a href="/publications/elbm-coclust.html" target="_blank" rel="noopener noreferrer">
-        Project Page
-      </a>
-
-      <a href="/publications/elbm-coclust.html" target="_blank" rel="noopener noreferrer">
-        Download
-      </a>
+      <div class="publication-links">
+        <a href="https://doi.org/10.1007/s11634-024-00608-3" target="_blank" rel="noopener noreferrer">
+          Paper DOI
+        </a>
+        <a href="https://github.com/Saeidhoseinipour/ELBMcoclust" target="_blank" rel="noopener noreferrer">
+          GitHub Code
+        </a>
+        <a href="https://doi.org/10.5281/zenodo.21093419" target="_blank" rel="noopener noreferrer">
+          Zenodo DOI
+        </a>
+        <a href="/publications/elbm-coclust.html" target="_blank" rel="noopener noreferrer">
+          Project Page
+        </a>
+        <a href="/publications/elbm-coclust.html" target="_blank" rel="noopener noreferrer">
+          Download
+        </a>
+      </div>
     </div>
   </article>
 
   <article class="publication">
-    <div class="publication-title">
-      Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering
-    </div>
+    <img class="publication-image" src="assets/images/opnmtf-paper.png" alt="OPNMTF Paper">
+    <div class="publication-content">
+      <div class="publication-title">
+        Orthogonal Parametric Non-negative Matrix Tri-Factorization with α-Divergence for Co-clustering
+      </div>
 
-    <div class="publication-meta">
-      Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour
-    </div>
+      <div class="publication-meta">
+        Saeid Hoseinipour, Mina Aminghafari, Adel Mohammadpour
+      </div>
 
-    <p>
-      <em>Expert Systems with Applications</em>, 2023
-    </p>
+      <p>
+        <em>Expert Systems with Applications</em>, 2023
+      </p>
 
-    <p>
-      This paper presents an orthogonal parametric non-negative matrix
-      tri-factorization method with α-divergence for co-clustering.
-    </p>
+      <p>
+        This paper presents an orthogonal parametric non-negative matrix
+        tri-factorization method with α-divergence for co-clustering.
+      </p>
 
-    <div class="publication-links">
-      <a href="https://doi.org/10.1016/j.eswa.2023.120680" target="_blank" rel="noopener noreferrer">
-        Paper DOI
-      </a>
-
-      <a href="https://github.com/Saeidhoseinipour/NMTFcoclust" target="_blank" rel="noopener noreferrer">
-        GitHub Code
-      </a>
-
-      <a href="https://doi.org/10.5281/zenodo.21093166" target="_blank" rel="noopener noreferrer">
-        Zenodo DOI
-      </a>
-
-      <a href="/publications/opnmtf-coclust.html" target="_blank" rel="noopener noreferrer">
-        Project Page
-      </a>
-
-      <a href="https://hal.science/hal-05032037v1/file/OPNMTF_Saeid.pdf" target="_blank" rel="noopener noreferrer">
-        Download
-      </a>
+      <div class="publication-links">
+        <a href="https://doi.org/10.1016/j.eswa.2023.120680" target="_blank" rel="noopener noreferrer">
+          Paper DOI
+        </a>
+        <a href="https://github.com/Saeidhoseinipour/NMTFcoclust" target="_blank" rel="noopener noreferrer">
+          GitHub Code
+        </a>
+        <a href="https://doi.org/10.5281/zenodo.21093166" target="_blank" rel="noopener noreferrer">
+          Zenodo DOI
+        </a>
+        <a href="/publications/opnmtf-coclust.html" target="_blank" rel="noopener noreferrer">
+          Project Page
+        </a>
+        <a href="https://hal.science/hal-05032037v1/file/OPNMTF_Saeid.pdf" target="_blank" rel="noopener noreferrer">
+          Download
+        </a>
+      </div>
     </div>
   </article>
 </section>
