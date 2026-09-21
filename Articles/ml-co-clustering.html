@@ -1,0 +1,95 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>A practical guide to co-clustering — Saeid Hoseinipour</title>  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>  
+<style>  
+  :root {  
+    --primary: #1e3a8a;  
+    --text: #1f2937;  
+    --muted: #6b7280;  
+    --border: #e5e7eb;  
+    --bg-soft: #f9fafb;  
+    --radius: 10px;  
+    --maxw: 820px;  
+  }  
+
+  * { box-sizing: border-box; }  
+
+  body {  
+    margin: 0;  
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;  
+    color: var(--text);  
+    line-height: 1.7;  
+    background: #fff;  
+  }  
+
+  /* ---------- Header ---------- */  
+  .article-header {  
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);  
+    color: #fff;  
+    padding: 48px 24px 40px;  
+  }  
+
+  .article-header-inner { max-width: var(--maxw); margin: 0 auto; }  
+
+  .back-link {  
+    display: inline-flex;  
+    align-items: center;  
+    gap: 6px;  
+    color: rgba(255,255,255,.85);  
+    text-decoration: none;  
+    font-size: .9rem;  
+    margin-bottom: 18px;  
+  }  
+  .back-link:hover { color: #fff; text-decoration: underline; }  
+
+  .article-header h1 {  
+    margin: 0 0 12px;  
+    font-size: clamp(1.6rem, 4vw, 2.3rem);  
+    line-height: 1.25;  
+  }  
+
+  .article-meta {  
+    font-size: .9rem;  
+    color: rgba(255,255,255,.8);  
+    display: flex;  
+    flex-wrap: wrap;  
+    gap: 8px 18px;  
+  }  
+
+  /* ---------- Layout ---------- */  
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 36px 24px 72px; }  
+
+  .toc {  
+    background: var(--bg-soft);  
+    border: 1px solid var(--border);  
+    border-left: 4px solid var(--primary);  
+    border-radius: var(--radius);  
+    padding: 16px 22px;  
+    margin-bottom: 36px;  
+  }  
+  .toc h2 { font-size: .95rem; text-transform: uppercase; letter-spacing: .06em;  
+            color: var(--muted); margin: 0 0 10px; border: 0; padding: 0; }  
+  .toc ol { margin: 0; padding-left: 20px; }  
+  .toc a { color: var(--primary); text-decoration: none; }  
+  .toc a:hover { text-decoration: underline; }  
+
+  article h2 {  
+    font-size: 1.5rem;  
+    margin: 44px 0 16px;  
+    padding-bottom: 8px;  
+    border-bottom: 1px solid #d1d5db;  
+  }  
+  article h3 { font-size: 1.15rem; margin: 28px 0 10px; }  
+  article p { margin: 0 0 16px; }  
+  article ul, article ol { margin: 0 0 16px; padding-left: 24px; }  
+  article li { margin-bottom: 6px; }  
+
+  article a { color: var(--primary); }  
+
+  blockquote {  
+    margin: 22px 0;  
