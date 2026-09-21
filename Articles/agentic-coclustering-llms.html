@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic co-clustering with LLMs — Saeid Hoseinipour</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg-soft: #f9fafb;
+    --radius: 10px;
+    --maxw: 820px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: #fff;
+  }
+
+  /* ---------- Header ---------- */
+  .article-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+    color: #fff;
+    padding: 48px 24px 40px;
+  }
+
+  .article-header-inner { max-width: var(--maxw); margin: 0 auto; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,.85);
+    text-decoration: none;
+    font-size: .9rem;
+    margin-bottom: 18px;
+  }
+  .back-link:hover { color: #fff; text-decoration: underline; }
+
+  .article-header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    line-height: 1.25;
+  }
+
+  .article-meta {
+    font-size: .9rem;
+    color: rgba(255,255,255,.8);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 36px 24px 72px; }
+
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius);
+    padding: 16px 22px;
+    margin-bottom: 36px;
+  }
+  .toc h2 { font-size: .95rem; text-transform: uppercase; letter-spacing: .06em;
+            color: var(--muted); margin: 0 0 10px; border: 0; padding: 0; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc a { color: var(--primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  article h2 {
+    font-size: 1.5rem;
+    margin: 44px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d1d5db;
+  }
+  article h3 { font-size: 1.15rem; margin: 28px 0 10px; }
+  article p { margin: 0 0 16px; }
+  article ul, article ol { margin: 0 0 16px; padding-left: 24px; }
+  article li { margin-bottom: 6px; }
+
+  article a { color: var(--primary); }
+
+  blockquote {
+    margin: 22px 0;
+    padding: 12px 20px;
+    border-left: 4px solid var(--primary);
+    background: var(--bg-soft);
+    color: #374151;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  code {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .9em;
+    font-family: "SFMono-Regular", Consolas, monospace;
+  }
+
+  pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: .87rem;
+    line-height: 1.55;
+    margin: 0 0 22px;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+
+  /* ---------- Math ---------- */
+  .math {
+    display: block;
+    text-align: center;
+    margin: 22px 0;
+    font-style: italic;
+    font-family: "Cambria Math", Georgia, serif;
+    font-size: 1.05rem;
+  }
+
+  /* ---------- Figures / media ---------- */
+  figure {
+    margin: 26px 0;
+    text-align: center;
+  }
+  figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  figcaption {
+    margin-top: 10px;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;      /* 16:9 */
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    margin: 26px 0 8px;
+  }
+  .video-wrap iframe,
+  .video-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  video {
+    width: 100%;
+    max-width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin: 26px 0 8px;
+    background: #000;
+  }
+
+  /* ---------- Tables ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: .92rem;
+  }
+  th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: left; }
+  th { background: var(--bg-soft); font-weight: 700; }
+
+  /* ---------- Callouts ---------- */
+  .note, .warn {
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 22px 0;
+    font-size: .94rem;
+  }
+  .note { background: #eff6ff; border-left: 4px solid #2563eb; }
+  .warn { background: #fffbeb; border-left: 4px solid #d97706; }
+
+  /* ---------- Assets bar ---------- */
+  .assets-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 0 6px;
+    margin-top: 46px;
+    border-top: 1px solid var(--border);
+  }
+  .assets-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    background: #fff;
+    transition: all .2s ease;
+  }
+  .assets-bar a:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+
+  /* ---------- Prev / next ---------- */
+  .article-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: .92rem;
+  }
+  .article-nav a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  .article-nav a:hover { text-decoration: underline; }
+
+  footer.article-footer {
+    text-align: center;
+    padding: 26px 24px 40px;
+    color: var(--muted);
+    font-size: .85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <a class="back-link" href="../index.html#articles">&#8592; Back to Articles</a>
+    <h1>Agentic co-clustering with LLMs</h1>
+    <div class="article-meta">
+      <span>Saeid Hoseinipour</span>
+      <span>21 September 2026</span>
+      <span>12 min read</span>
+      <span>Tutorial</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== Table of contents ===== -->
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#setup">Setup and notation</a></li>
+      <li><a href="#media">Figures and video</a></li>
+      <li><a href="#code">Implementation</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+    <!-- ===== 1. Text ===== -->
+    <section id="intro">
+      <h2>1. Introduction</h2>
+      <p>
+        Co-clustering partitions the rows and columns of a data matrix simultaneously.
+        Classical objectives — the latent block model, non-negative matrix tri-factorization —
+        need the number of blocks up front and struggle when the matrix is noisy and sparse.
+        This article explores whether a large language model, used as an <em>agent</em> rather than
+        a fixed classifier, can propose, critique and refine block structures.
+      </p>
+      <blockquote>
+        The agent is not solving the optimization problem. It is supplying structural priors
+        that a numerical solver can then exploit.
+      </blockquote>
+      <p>
+        The pipeline has three stages: the LLM proposes an initial block count and a coarse
+        assignment, a probabilistic model refines it, and the LLM evaluates the result and
+        either accepts it or restarts with a new hypothesis.
+      </p>
+    </section>
+
+    <!-- ===== 2. Math ===== -->
+    <section id="setup">
+      <h2>2. Setup and notation</h2>
+      <p>
+        Let <span class="math" style="display:inline">X &#8712; &#8477;<sup>n&times;d</sup></span>
+        be the data matrix with <code>n</code> rows and <code>d</code> columns. A co-clustering
+        assigns each row <span class="math" style="display:inline">i</span> a row-block
+        <span class="math" style="display:inline">g<sub>i</sub></span> and each column
+        <span class="math" style="display:inline">j</span> a column-block
+        <span class="math" style="display:inline">h<sub>j</sub></span>. The complete-data
+        log-likelihood factorizes over blocks:
+      </p>
+      <p class="math">
+        &#8467;(X; g, h) = &sum;<sub>i</sub> &sum;<sub>j</sub>
+        log f(x<sub>ij</sub> | &theta;<sub>g<sub>i</sub> h<sub>j</sub></sub>)
+      </p>
+      <p>
+        With an exponential-family block model, each block carries its own natural parameter
+        <span class="math" style="display:inline">&theta;<sub>kl</sub></span>. Sparsity is induced by a
+        spike-and-slab prior on those parameters, which is where the agent's structural prior enters.
+      </p>
+    </section>
+
+    <!-- ===== 3. Media: images + video ===== -->
+    <section id="media">
+      <h2>3. Figures and video</h2>
+
+      <h3>Pipeline overview</h3>
+      <figure>
+        <!-- swap for your own file; keep the relative path under Articles/assets/ -->
+        <img src="assets/images/agentic-pipeline.png"
+             alt="Three-stage agentic co-clustering pipeline: LLM proposal, model refinement, LLM evaluation">
+        <figcaption>
+          <strong>Figure 1.</strong> The three-stage loop. The LLM proposes a block structure,
+          the solver refines it, and the LLM judges whether the refinement improved the objective.
+        </figcaption>
+      </figure>
+
+      <h3>Walkthrough video</h3>
+      <p>
+        The screencast below runs the whole loop on a small benchmark and shows how the
+        proposed block count evolves across iterations.
+      </p>
+
+      <!-- Option A: self-hosted MP4 (recommended for a static site) -->
+      <video controls preload="metadata" poster="assets/images/agentic-video-poster.jpg">
+        <source src="assets/videos/agentic-coclustering-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        <a href="assets/videos/agentic-coclustering-demo.mp4">Download the video</a>.
+      </video>
+      <p style="font-size:.85rem;color:var(--muted);text-align:center;margin-top:-6px;">
+        <strong>Video 1.</strong> End-to-end run, 4 minutes.
+      </p>
+
+      <!-- Option B: YouTube. Delete the <video> above and uncomment this.
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                title="Agentic co-clustering with LLMs"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);text-align:center;">
+        <strong>Video 1.</strong> End-to-end run, 4 minutes.
+      </p>
+      -->
+
+      <div class="note">
+        <strong>Note.</strong> Relative paths here resolve to
+        <code>Articles/assets/images/</code> and <code>Articles/assets/videos/</code>.
+        Keep all files for this article under those folders so the page stays portable.
+      </div>
+    </section>
+
+    <!-- ===== 4. Code ===== -->
+    <section id="code">
+      <h2>4. Implementation</h2>
+      <p>
+        The agent wrapper is deliberately thin — it only ever emits JSON that describes a
+        candidate block structure.
+      </p>
+
+      <pre><code class="language-python">import json
+from dataclasses import dataclass
+
+@dataclass
+class Proposal:
+    n_row_blocks: int
+    n_col_blocks: int
+    rationale: str
+
+PROMPT = """You are a data analyst. Given a short description of the
+matrix below, propose the number of row blocks and column blocks that
+best explain its structure. Reply with JSON only.
+
+{description}
+"""
+
+def propose(description: str) -> Proposal:
+    raw = llm(PROMPT.format(description=description))
+    data = json.loads(raw)
+    return Proposal(**data)
+</code></pre>
+
+      <p>
+        The solver then runs from that starting point. A single iteration looks like this:
+      </p>
+
+      <pre><code class="language-python">prop = propose(describe(X))
+assign = fit(X, n_row_blocks=prop.n_row_blocks,
+                 n_col_blocks=prop.n_col_blocks)
+
+score = evaluate(X, assign)
+if score &lt; best_score:
+    best_score, best_assign = score, assign
+else:
+    prop = revise(prop, feedback=score)
+</code></pre>
+
+      <div class="warn">
+        <strong>Gotcha.</strong> The model will happily return a plausible-looking
+        <code>n_row_blocks</code> for a matrix that has no real block structure. Always
+        compare against a null model before trusting the proposal.
+      </div>
+    </section>
+
+    <!-- ===== 5. Table ===== -->
+    <section id="results">
+      <h2>5. Results</h2>
+      <p>Mean adjusted Rand index over five runs on three benchmark datasets:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Latent block model</th>
+            <th>NMTF</th>
+            <th>Agentic (ours)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Rats</td><td>0.62</td><td>0.58</td><td><strong>0.71</strong></td></tr>
+          <tr><td>Bibtex</td><td>0.44</td><td>0.47</td><td><strong>0.55</strong></td></tr>
+          <tr><td>WebKB</td><td>0.39</td><td>0.41</td><td><strong>0.46</strong></td></tr>
+        </tbody>
+      </table>
+
+      <figure>
+        <img src="assets/images/agentic-results.png"
+             alt="Bar chart comparing adjusted Rand index across three datasets and three methods">
+        <figcaption>
+          <strong>Figure 2.</strong> The gain is largest where the matrix is sparsest,
+          which is consistent with the agent supplying useful priors.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 6. Conclusion ===== -->
+    <section id="conclusion">
+      <h2>6. Conclusion</h2>
+      <p>
+        Using an LLM as a structural agent rather than an end-to-end predictor is a narrow but
+        useful role: it reduces the number of restarts the solver needs on sparse data. It is not
+        a replacement for the probabilistic model, and it fails quietly when the data has no
+        block structure at all.
+      </p>
+      <p>
+        The full implementation is on
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, and the
+        notebook is archived on <a href="https://zenodo.org/" target="_blank" rel="noopener">Zenodo</a>.
+      </p>
+    </section>
+
+    <!-- ===== Assets bar ===== -->
+    <div class="assets-bar">
+      <a href="assets/images/agentic-pipeline.png" download>
+        &#8681; Images
+      </a>
+      <a href="assets/videos/agentic-coclustering-demo.mp4" download>
+        &#8681; Video
+      </a>
+      <a href="assets/downloads/agentic-coclustering-llms.pdf" download>
+        &#8681; Download PDF
+      </a>
+      <a href="https://github.com/" target="_blank" rel="noopener">
+        &#8599; Code
+      </a>
+    </div>
+
+    <!-- ===== Prev / next ===== -->
+    <nav class="article-nav">
+      <a href="ml-co-clustering.html">&#8592; Previous: A practical guide to co-clustering</a>
+      <a href="sparse-lbm-tutorial.html">Next: Sparse LBM tutorial &#8594;</a>
+    </nav>
+
+  </article>
+</div>
+
+<footer class="article-footer">
+  &copy; 2026 Saeid Hoseinipour — <a href="../index.html">Home</a>
+</footer>
+
+<script>hljs.highlightAll();</script>
+</body>
+</html>
