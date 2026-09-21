@@ -363,6 +363,36 @@
   min-width: 0;
 }
 
+    .article-head {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.article-thumb {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.article-head .meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 4px 0 8px;
+}
+
+.article-head .abstract {
+  margin: 0;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .article-head { flex-direction: column; }
+  .article-thumb { width: 100%; height: auto; }
+}
     
 .contact-links {
   display: flex;
@@ -509,8 +539,8 @@
       <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
-      <a href="#articles">Articles</a>      <!-- NEW TAB -->
       <a href="#software">Software</a>
+      <a href="#articles">Articles</a>      <!-- NEW TAB -->
       <a href="#contact">Contact</a>
     </nav>
     
@@ -538,23 +568,7 @@
       </section>
 
 
-      <section id="articles">
-        <h2>Articles</h2>
 
-        <!-- Each article is a clickable block with image + title -->
-        <article class="publication">
-          <a href="publications/selbm-article.html">
-            <img class="publication-image" src="assets/icons/selbm_2_130.png" alt="SELBM article">
-          </a>
-          <div class="publication-content">
-            <div class="publication-title">
-              <a href="publications/selbm-article.html">Agentic co-clustering with LLMs</a>
-            </div>
-            <p class="publication-meta">Saeid Hoseinipour</p>
-            <p>semi-Agentic co-clustering via large language models.</p>
-          </div>
-        </article>
-      </section>
 
 
 <section id="publications">
@@ -717,8 +731,48 @@
     </div>
   </div>
 </article>
+
+
+<!-- ================= ARTICLES ================= -->
+<section id="articles">
+  <h2>Articles</h2>
+
+  <!-- Article -->
+  <div class="pub">
+
+    <div class="article-head">
+      <img class="article-thumb" src="Articles/assets/images/agentic-coclustering-thumb.png"
+           alt="Agentic co-clustering with LLMs">
+      <div>
+        <h3>Agentic co-clustering with LLMs</h3>
+        <p class="meta">Saeid Hoseinipour · 2026 · Tutorial / Blog</p>
+        <p class="abstract">
+          A walkthrough of using large language models as agents inside a co-clustering
+          pipeline — how they propose block structures, validate them, and where they fail.
+        </p>
+      </div>
+    </div>
+
+    <div class="links">
+      <a class="btn" href="Articles/agentic-coclustering-llms.html#media">
+        <img src="assets/icons/image.svg" alt=""> Image
+      </a>
+      <a class="btn" href="Articles/agentic-coclustering-llms.html#media">
+        <img src="assets/icons/video.svg" alt=""> Video
+      </a>
+      <a class="btn" href="Articles/assets/downloads/agentic-coclustering-llms.pdf" download>
+        <img src="assets/icons/download.svg" alt=""> Download
+      </a>
+      <a class="btn" href="Articles/agentic-coclustering-llms.html">
+        <img src="assets/icons/article.svg" alt=""> Page
+      </a>
+    </div>
+
+  </div>
+
 </section>
 
+  
       <section id="contact">
         <h2>Contact</h2>
 
