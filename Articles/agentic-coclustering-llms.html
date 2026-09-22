@@ -15,9 +15,12 @@
     --bg-soft: #f9fafb;
     --radius: 10px;
     --maxw: 820px;
+    --yt: #cc0000;
   }
 
   * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     margin: 0;
@@ -61,6 +64,23 @@
     gap: 8px 18px;
   }
 
+  .watch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--yt);
+    font-weight: 700;
+    font-size: .9rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.55);
+    transition: all .2s ease;
+  }
+  .watch-btn:hover { background: #fee2e2; border-color: #fff; }
+
   /* ---------- Layout ---------- */
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 36px 24px 72px; }
 
@@ -77,6 +97,12 @@
   .toc ol { margin: 0; padding-left: 20px; }
   .toc a { color: var(--primary); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
+  .toc .tc-inline {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: .8rem;
+    color: var(--muted);
+    margin-left: 6px;
+  }
 
   article h2 {
     font-size: 1.5rem;
@@ -130,7 +156,7 @@
     font-size: 1.05rem;
   }
 
-  /* ---------- Figures / media ---------- */
+  /* ---------- Figures ---------- */
   figure {
     margin: 26px 0;
     text-align: center;
@@ -147,6 +173,7 @@
     color: var(--muted);
   }
 
+  /* ---------- YouTube embed ---------- */
   .video-wrap {
     position: relative;
     width: 100%;
@@ -157,22 +184,12 @@
     background: #000;
     margin: 26px 0 8px;
   }
-  .video-wrap iframe,
-  .video-wrap video {
+  .video-wrap iframe {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
-  }
-
-  video {
-    width: 100%;
-    max-width: 100%;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    margin: 26px 0 8px;
-    background: #000;
   }
 
   /* ---------- Tables ---------- */
@@ -194,6 +211,61 @@
   }
   .note { background: #eff6ff; border-left: 4px solid #2563eb; }
   .warn { background: #fffbeb; border-left: 4px solid #d97706; }
+
+  /* ---------- Video segment bars ---------- */
+  .segment-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 52px 0 0;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .segment-bar + h2 { margin-top: 12px; }
+
+  .tc {
+    background: var(--primary);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: .78rem;
+    letter-spacing: .03em;
+  }
+
+  /* ---------- Script blocks ---------- */
+  .narration, .onscreen, .broll {
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: .94rem;
+    border-left: 4px solid;
+  }
+  .narration { background: #f5f3ff; border-color: #7c3aed; }
+  .onscreen  { background: #ecfeff; border-color: #0891b2; }
+  .broll     { background: #f0fdf4; border-color: #16a34a; }
+
+  .narration p:last-child,
+  .onscreen p:last-child,
+  .broll p:last-child { margin-bottom: 0; }
+
+  .narration .label,
+  .onscreen .label,
+  .broll .label {
+    display: block;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .narration .label { color: #6d28d9; }
+  .onscreen  .label { color: #0e7490; }
+  .broll     .label { color: #15803d; }
 
   /* ---------- Assets bar ---------- */
   .assets-bar {
@@ -255,32 +327,78 @@
     <div class="article-meta">
       <span>Saeid Hoseinipour</span>
       <span>21 September 2026</span>
-      <span>12 min read</span>
+      <span>10 min video &middot; 12 min read</span>
       <span>Tutorial</span>
     </div>
+    <a class="watch-btn" href="#watch">&#9654; Watch on YouTube</a>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- ===== Table of contents ===== -->
+  <!-- ===== Table of contents (doubles as YouTube chapters) ===== -->
   <nav class="toc">
-    <h2>Contents</h2>
+    <h2>Contents &amp; video chapters</h2>
     <ol>
-      <li><a href="#intro">Introduction</a></li>
-      <li><a href="#setup">Setup and notation</a></li>
-      <li><a href="#media">Figures and video</a></li>
-      <li><a href="#code">Implementation</a></li>
-      <li><a href="#results">Results</a></li>
-      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#watch">Watch the video</a></li>
+      <li><a href="#intro">Introduction</a><span class="tc-inline">00:00</span></li>
+      <li><a href="#setup">Setup and notation</a><span class="tc-inline">01:30</span></li>
+      <li><a href="#pipeline">The three-stage pipeline</a><span class="tc-inline">03:15</span></li>
+      <li><a href="#code">Implementation</a><span class="tc-inline">05:00</span></li>
+      <li><a href="#results">Results</a><span class="tc-inline">07:30</span></li>
+      <li><a href="#conclusion">Conclusion</a><span class="tc-inline">09:15</span></li>
+      <li><a href="#production">Production notes</a></li>
     </ol>
   </nav>
 
   <article>
 
-    <!-- ===== 1. Text ===== -->
+    <!-- ===== 0. Video ===== -->
+    <section id="watch">
+      <h2>Watch the video</h2>
+      <p>
+        The full walkthrough is on YouTube. Every section below carries the matching
+        timecode, so you can jump straight from the text to the moment in the video.
+      </p>
+
+      <!-- ============================================================
+           Replace VIDEO_ID with your own YouTube video id.
+           Example: https://www.youtube.com/embed/aBcDeFgHiJk
+           ============================================================ -->
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&amp;modestbranding=1"
+                title="Agentic co-clustering with LLMs — full walkthrough"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);text-align:center;">
+        <strong>Video 1.</strong> End-to-end run, 10 minutes. Chapters are listed in the description.
+      </p>
+
+      <div class="note">
+        <strong>Note.</strong> Swap <code>VIDEO_ID</code> in the <code>&lt;iframe&gt;</code> above
+        for the id of your uploaded video. To embed a whole series instead, replace it with a
+        playlist embed: <code>https://www.youtube.com/embed/videoseries?list=PLAYLIST_ID</code>.
+      </div>
+
+      <h3>Chapter markers for the YouTube description</h3>
+      <p>Copy this block straight into the video description so YouTube builds the chapter bar:</p>
+      <pre><code class="language-text">00:00 Why co-clustering is hard
+01:30 Setup and notation
+03:15 The three-stage agentic pipeline
+05:00 Implementation in Python
+07:30 Results on three benchmarks
+09:15 When it fails — and conclusion</code></pre>
+    </section>
+
+    <!-- ===== 1. Introduction ===== -->
     <section id="intro">
+      <p class="segment-bar">
+        <span class="tc">00:00</span> Segment 1 &middot; 1 min 30 s &middot; Hook
+      </p>
       <h2>1. Introduction</h2>
+
       <p>
         Co-clustering partitions the rows and columns of a data matrix simultaneously.
         Classical objectives — the latent block model, non-negative matrix tri-factorization —
@@ -297,11 +415,36 @@
         assignment, a probabilistic model refines it, and the LLM evaluates the result and
         either accepts it or restarts with a new hypothesis.
       </p>
+
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “If you have ever clustered a big sparse matrix, you know the pain: you have to
+          tell the algorithm how many blocks to look for, and you usually guess wrong.
+          In this video I want to show you a small trick — letting a language model make
+          that guess for you, and then letting a proper statistical model clean it up.”
+        </p>
+      </div>
+
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>Title card: “Agentic co-clustering with LLMs”. Then the one-line promise:
+        <em>LLM proposes &rarr; solver refines &rarr; LLM judges.</em></p>
+      </div>
+
+      <div class="broll">
+        <span class="label">B-roll</span>
+        <p>A sparse matrix heatmap slowly rotating, blocks flickering in and out of focus.</p>
+      </div>
     </section>
 
-    <!-- ===== 2. Math ===== -->
+    <!-- ===== 2. Setup and notation ===== -->
     <section id="setup">
+      <p class="segment-bar">
+        <span class="tc">01:30</span> Segment 2 &middot; 1 min 45 s &middot; Whiteboard
+      </p>
       <h2>2. Setup and notation</h2>
+
       <p>
         Let <span class="math" style="display:inline">X &#8712; &#8477;<sup>n&times;d</sup></span>
         be the data matrix with <code>n</code> rows and <code>d</code> columns. A co-clustering
@@ -320,15 +463,31 @@
         <span class="math" style="display:inline">&theta;<sub>kl</sub></span>. Sparsity is induced by a
         spike-and-slab prior on those parameters, which is where the agent's structural prior enters.
       </p>
+
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “Two things to remember. One: a co-clustering is just two labellings — one for rows,
+          one for columns. Two: the likelihood factorizes over blocks, so if you get the blocks
+          right, the rest is easy. The whole difficulty is choosing the blocks.”
+        </p>
+      </div>
+
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>Animated matrix with a row-group colour bar on the left and a column-group colour bar
+        on top. The formula appears line by line as it is spoken.</p>
+      </div>
     </section>
 
-    <!-- ===== 3. Media: images + video ===== -->
-    <section id="media">
-      <h2>3. Figures and video</h2>
+    <!-- ===== 3. Pipeline ===== -->
+    <section id="pipeline">
+      <p class="segment-bar">
+        <span class="tc">03:15</span> Segment 3 &middot; 1 min 45 s &middot; Diagram
+      </p>
+      <h2>3. The three-stage pipeline</h2>
 
-      <h3>Pipeline overview</h3>
       <figure>
-        <!-- swap for your own file; keep the relative path under Articles/assets/ -->
         <img src="assets/images/agentic-pipeline.png"
              alt="Three-stage agentic co-clustering pipeline: LLM proposal, model refinement, LLM evaluation">
         <figcaption>
@@ -337,44 +496,38 @@
         </figcaption>
       </figure>
 
-      <h3>Walkthrough video</h3>
-      <p>
-        The screencast below runs the whole loop on a small benchmark and shows how the
-        proposed block count evolves across iterations.
-      </p>
+      <ol>
+        <li><strong>Propose.</strong> The LLM reads a short statistical description of the matrix
+            and returns a candidate number of row blocks and column blocks, plus a rationale.</li>
+        <li><strong>Refine.</strong> A block model is fitted from that starting point until the
+            objective converges.</li>
+        <li><strong>Judge.</strong> The LLM sees the score and the block summary and either accepts
+            the result or asks for a revised proposal.</li>
+      </ol>
 
-      <!-- Option A: self-hosted MP4 (recommended for a static site) -->
-      <video controls preload="metadata" poster="assets/images/agentic-video-poster.jpg">
-        <source src="assets/videos/agentic-coclustering-demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        <a href="assets/videos/agentic-coclustering-demo.mp4">Download the video</a>.
-      </video>
-      <p style="font-size:.85rem;color:var(--muted);text-align:center;margin-top:-6px;">
-        <strong>Video 1.</strong> End-to-end run, 4 minutes.
-      </p>
-
-      <!-- Option B: YouTube. Delete the <video> above and uncomment this.
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-                title="Agentic co-clustering with LLMs"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “Notice what the model is <em>not</em> doing. It never touches the numbers. It only
+          says ‘try four row blocks and three column blocks’, and the solver does the real work.
+          That keeps the method honest — every claim is still backed by a likelihood.”
+        </p>
       </div>
-      <p style="font-size:.85rem;color:var(--muted);text-align:center;">
-        <strong>Video 1.</strong> End-to-end run, 4 minutes.
-      </p>
-      -->
 
-      <div class="note">
-        <strong>Note.</strong> Relative paths here resolve to
-        <code>Articles/assets/images/</code> and <code>Articles/assets/videos/</code>.
-        Keep all files for this article under those folders so the page stays portable.
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>Figure 1 animates: the three boxes light up in sequence, with a loop arrow returning
+        from “Judge” to “Propose”.</p>
       </div>
     </section>
 
     <!-- ===== 4. Code ===== -->
     <section id="code">
+      <p class="segment-bar">
+        <span class="tc">05:00</span> Segment 4 &middot; 2 min 30 s &middot; Screen capture
+      </p>
       <h2>4. Implementation</h2>
+
       <p>
         The agent wrapper is deliberately thin — it only ever emits JSON that describes a
         candidate block structure.
@@ -422,11 +575,35 @@ else:
         <code>n_row_blocks</code> for a matrix that has no real block structure. Always
         compare against a null model before trusting the proposal.
       </div>
+
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “Twenty lines, no framework. The prompt asks for JSON only, and the dataclass validates
+          it. If the model returns something that does not parse, we just retry — that is the
+          entire error handling.”
+        </p>
+      </div>
+
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>Live typing of the two code blocks. Highlight <code>json.loads</code> and the
+        <code>if score &lt; best_score</code> branch as they are mentioned.</p>
+      </div>
+
+      <div class="broll">
+        <span class="label">B-roll</span>
+        <p>Terminal running the loop, with the proposed block count changing between iterations.</p>
+      </div>
     </section>
 
-    <!-- ===== 5. Table ===== -->
+    <!-- ===== 5. Results ===== -->
     <section id="results">
+      <p class="segment-bar">
+        <span class="tc">07:30</span> Segment 5 &middot; 1 min 45 s &middot; Results
+      </p>
       <h2>5. Results</h2>
+
       <p>Mean adjusted Rand index over five runs on three benchmark datasets:</p>
 
       <table>
@@ -453,11 +630,30 @@ else:
           which is consistent with the agent supplying useful priors.
         </figcaption>
       </figure>
+
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “The gain is modest but consistent — and it grows as the data gets sparser.
+          That is exactly what you would expect if the agent is contributing priors rather
+          than doing the clustering itself.”
+        </p>
+      </div>
+
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>The table builds row by row; the winning column is highlighted in the brand blue.
+        Then Figure 2 fades in with the bars growing.</p>
+      </div>
     </section>
 
     <!-- ===== 6. Conclusion ===== -->
     <section id="conclusion">
+      <p class="segment-bar">
+        <span class="tc">09:15</span> Segment 6 &middot; 1 min 15 s &middot; Wrap-up
+      </p>
       <h2>6. Conclusion</h2>
+
       <p>
         Using an LLM as a structural agent rather than an end-to-end predictor is a narrow but
         useful role: it reduces the number of restarts the solver needs on sparse data. It is not
@@ -469,15 +665,75 @@ else:
         <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, and the
         notebook is archived on <a href="https://zenodo.org/" target="_blank" rel="noopener">Zenodo</a>.
       </p>
+
+      <div class="narration">
+        <span class="label">Narration</span>
+        <p>
+          “So: a language model is a decent research assistant for model selection, and a bad
+          replacement for a statistical model. Use it to cut down restarts, not to make claims.
+          Code and notebook are linked below — thanks for watching.”
+        </p>
+      </div>
+
+      <div class="onscreen">
+        <span class="label">On screen</span>
+        <p>End card: “Code &amp; notebook in the description” plus subscribe prompt and
+        links to the previous and next videos.</p>
+      </div>
+    </section>
+
+    <!-- ===== 7. Production notes (not part of the video) ===== -->
+    <section id="production">
+      <h2>Production notes</h2>
+      <p>
+        Everything below is for producing the video and is not meant to be read on camera.
+      </p>
+
+      <h3>Shot list</h3>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Timecode</th><th>Shot</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>00:00</td><td>Talking head, hook</td><td>Camera A</td></tr>
+          <tr><td>2</td><td>01:30</td><td>Whiteboard / tablet, notation</td><td>Overhead</td></tr>
+          <tr><td>3</td><td>03:15</td><td>Pipeline diagram animation</td><td>Figure 1</td></tr>
+          <tr><td>4</td><td>05:00</td><td>Screen capture, live coding</td><td>Editor</td></tr>
+          <tr><td>5</td><td>07:30</td><td>Results table + bar chart</td><td>Figure 2</td></tr>
+          <tr><td>6</td><td>09:15</td><td>Talking head, end card</td><td>Camera A</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Assets checklist</h3>
+      <ul>
+        <li><code>assets/images/agentic-pipeline.png</code> — Figure 1, 1920&times;1080</li>
+        <li><code>assets/images/agentic-results.png</code> — Figure 2, 1920&times;1080</li>
+        <li><code>assets/images/agentic-video-poster.jpg</code> — YouTube thumbnail, 1280&times;720</li>
+        <li><code>assets/downloads/agentic-coclustering-llms.pdf</code> — article PDF</li>
+      </ul>
+
+      <h3>YouTube metadata</h3>
+      <ul>
+        <li><strong>Title:</strong> Agentic co-clustering with LLMs — let the model pick the blocks</li>
+        <li><strong>Tags:</strong> co-clustering, latent block model, LLM agents, NMTF, sparse matrices, Python</li>
+        <li><strong>Thumbnail:</strong> sparse heatmap on the left, three-stage loop arrow on the right,
+            large text “LLM picks the blocks”.</li>
+      </ul>
+
+      <div class="note">
+        <strong>Note.</strong> Relative paths resolve to <code>Articles/assets/images/</code>,
+        <code>Articles/assets/videos/</code> and <code>Articles/assets/downloads/</code>.
+        Keep every file for this article under those folders so the page stays portable.
+      </div>
     </section>
 
     <!-- ===== Assets bar ===== -->
     <div class="assets-bar">
-      <a href="assets/images/agentic-pipeline.png" download>
-        &#8681; Images
+      <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">
+        &#9654; Watch on YouTube
       </a>
-      <a href="assets/videos/agentic-coclustering-demo.mp4" download>
-        &#8681; Video
+      <a href="assets/images/agentic-pipeline.png" download>
+        &#8681; Figures
       </a>
       <a href="assets/downloads/agentic-coclustering-llms.pdf" download>
         &#8681; Download PDF
